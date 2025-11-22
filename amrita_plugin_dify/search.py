@@ -37,4 +37,7 @@ async def rag_tool(ctx: ToolContext) -> str | None:
         )
         return json.dumps({"success": True, "answer": response.answer})
     except Exception as e:
+        logger.opt(exception=e, colors=True).exception(
+            "[Dify] Error occurred while searching for answer"
+        )
         return json.dumps({"success": False, "error": str(e)})
