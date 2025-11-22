@@ -211,3 +211,4 @@ config/
 data/
 logs/
 plugins/
+bot.py

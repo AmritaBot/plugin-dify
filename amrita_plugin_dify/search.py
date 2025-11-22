@@ -1,7 +1,7 @@
 import json
 import typing
 
-from amrita.plugins.chat.API import ToolContext, config_manager, on_tools
+from amrita.plugins.chat.API import ToolContext, on_tools
 from dify_client import AsyncClient, models
 from nonebot import logger
 
@@ -17,7 +17,7 @@ async def rag_tool(ctx: ToolContext) -> str | None:
     Success => Return the answer(json {"success": true, "answer": "Answer"})
     Failed => Return the error message(json {"success": false, "error": "Error message"})
     """
-    if not getattr(config_manager.config.extra, "dify_enabled", None):
+    if not CONFIG.dify_enabled:
         logger.info("[Dify] Plugin is not enabled, skipping tool...")
         return
     try:

@@ -1,14 +1,7 @@
-from nonebot import require
+from nonebot import logger, require
 from nonebot.plugin import PluginMetadata
 
 require("amrita.plugins.chat")
-from amrita.plugins.chat.API import config_manager
-from amrita.plugins.chat.hook_manager import register_hook
-
-
-@register_hook
-async def _():
-    await config_manager.register_config("dify_enabled", True)
 
 
 from . import search
@@ -24,3 +17,5 @@ __plugin_meta__ = PluginMetadata(
 
 
 __all__ = ["search"]
+
+logger.info("[Dify] Succeed to load plugin amrita_plugin_dify")
