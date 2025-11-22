@@ -27,7 +27,7 @@ jobs:
           uv venv
           uv sync
           uv build
-          pip install dist/*.whl
+          uv run pip install dist/*.whl
 
       - name: 'Get Python path'
         run: |
