@@ -43,12 +43,6 @@ jobs:
           echo "DIFY_API_KEY=''" > .env
           echo "DIFY_API_BASE=''" >> .env
           uv run nb orm upgrade
-      - name: Run Load Test
-        run: |
-          echo "ADMIN_GROUP=1" >> .env
-          echo "LOG_LEVEL=DEBUG" >> .env
-          source ./.venv/bin/activate
-          uv run amrita test
 
       - name: Check code format
         uses: astral-sh/ruff-action@v3

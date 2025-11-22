@@ -54,6 +54,7 @@ typeCheckingMode = "standard"
 
 [tool.nonebot]
 plugins = ["amrita_plugin_dify"]
+plugin_dirs = ["plugins/"]
 adapters = [
     { name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11" },
 ]
