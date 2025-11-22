@@ -26,8 +26,10 @@ jobs:
         run: |
           uv venv
           uv sync
+          uv build
+          pip install dist/*.whl
 
-      - name: Get Python path
+      - name: 'Get Python path'
         run: |
           PYTHON_BIN="$(uv run python -c 'import sys; print(sys.executable)')"
           echo "PYTHON_BIN=$PYTHON_BIN" >> $GITHUB_ENV
