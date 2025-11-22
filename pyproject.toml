@@ -46,6 +46,9 @@ ignore = [
     "RUF003", # ambiguous-unicode-character-comment
 ]
 
+[tool.setuptools.packages.find]
+include = ["nonebot_plugin_dify"]
+
 [tool.pyright]
 typeCheckingMode = "standard"
 
