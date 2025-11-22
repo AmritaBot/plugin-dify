@@ -1,7 +1,7 @@
 import json
 import typing
 
-from amrita.plugins.chat.API import ToolContext, on_tools
+from amrita.plugins.chat.API import ToolContext, config_manager, on_tools
 from dify_client import AsyncClient, models
 from nonebot import logger
 
@@ -10,13 +10,16 @@ from .models import RAG_TOOL_DATA
 
 
 @on_tools(RAG_TOOL_DATA, strict=True, custom_run=True)
-async def rag_tool(ctx: ToolContext) -> str:
+async def rag_tool(ctx: ToolContext) -> str | None:
     """
     Use Dify to search for an answer to a query.
 
     Success => Return the answer(json {"success": true, "answer": "Answer"})
     Failed => Return the error message(json {"success": false, "error": "Error message"})
     """
+    if not getattr(config_manager.config.extra, "dify_enabled", None):
+        logger.info("[Dify] Plugin is not enabled, skipping tool...")
+        return
     try:
         query: dict[str, str] = ctx.data
         event = ctx.event.get_nonebot_event()

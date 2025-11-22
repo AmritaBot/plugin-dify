@@ -23,6 +23,5 @@ DIFY_API_BASE=<Dify API Base> # Dify API Base URL(Default to `https://api.dify.a
 
 ```toml
 [extra]
-...
-DIFY_ENABLED = true # 是否启用Dify扩展
+dify_enabled = true # 是否启用Dify扩展
 ```

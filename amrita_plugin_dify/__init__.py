@@ -1,6 +1,16 @@
 from nonebot import require
 from nonebot.plugin import PluginMetadata
 
+require("amrita.plugins.chat")
+from amrita.plugins.chat.API import config_manager
+from amrita.plugins.chat.hook_manager import register_hook
+
+
+@register_hook
+async def _():
+    await config_manager.register_config("dify_enabled", True)
+
+
 from . import search
 
 __plugin_meta__ = PluginMetadata(
@@ -12,6 +22,5 @@ __plugin_meta__ = PluginMetadata(
     supported_adapters=None,  # Support all adapters
 )
 
-require("amrita.plugins.chat")
 
 __all__ = ["search"]
